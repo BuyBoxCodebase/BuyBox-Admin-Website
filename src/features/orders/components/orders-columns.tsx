@@ -46,8 +46,32 @@ export const columns: ColumnDef<Order>[] = [
     cell: ({ row }) => {
       const { id } = row.original
       return (
-        <LongText className='max-w-36'>{id}</LongText>
+        <LongText className='max-w-28'>{id}</LongText>
       )
+    },
+    meta: { className: 'w-28' },
+  },
+    {
+     id: 'seller',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='Seller' />
+      ),
+    cell: ({ row }) => {
+      const { products } = row.original
+      const seller = products[0]?.product?.brand?.user?.name
+      return <LongText className='max-w-42'>{seller}</LongText>
+    },
+    meta: { className: 'w-36' },
+  },
+  {
+     id: 'seller',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='Phone' />
+      ),
+    cell: ({ row }) => {
+      const { products } = row.original
+      const seller = products[0]?.product?.brand?.user?.phoneNumber
+      return <LongText className='max-w-42'>{seller}</LongText>
     },
     meta: { className: 'w-36' },
   },
