@@ -6,7 +6,7 @@ export default function Admin() {
     const location = useLocation();
     const navigate = useNavigate();
     const queryParams = new URLSearchParams(location.search);
-    const token = queryParams.get('token');
+    const token = queryParams.get('accessToken');
     const baseUrl = import.meta.env.VITE_BASE_URL as string;
     const [isLoading, setIsLoading] = useState(true);
 
