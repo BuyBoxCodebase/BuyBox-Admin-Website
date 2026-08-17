@@ -35,8 +35,8 @@ interface Props {
 }
 
 const formSchema = z.object({
-  categoryName: z.string().min(1, 'Name is required.'),
-  priority: z.string().transform((val) => parseInt(val) || 0),
+  categoryName: z.string().trim().min(1, 'Name is required.'),
+  priority: z.coerce.number().default(0),
   imageUrl: z.string().optional(),
 })
 
