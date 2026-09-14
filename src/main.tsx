@@ -39,6 +39,15 @@ const queryClient = new QueryClient({
         handleServerError(error)
 
         if (error instanceof AxiosError) {
+          if (error.response?.status === 401) {
+            toast({
+              variant: 'destructive',
+              title: 'Session expired!',
+            })
+            useAuthStore.getState().auth.reset()
+            const redirect = `${router.history.location.href}`
+            router.navigate({ to: '/sign-in', search: { redirect } })
+          }
           if (error.response?.status === 304) {
             toast({
               variant: 'destructive',
