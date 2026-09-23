@@ -33,7 +33,7 @@ export default function LinoChats() {
   useEffect(() => {
     const fetchConversations = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/lino/admin/conversations')
+        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/lino/admin/conversations`)
         setConversations(response.data)
       } catch (error) {
         console.error('Failed to load lino conversations', error)
