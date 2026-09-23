@@ -23,7 +23,6 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog'
 import axios from 'axios'
-import { ScrollArea } from '@/components/ui/scroll-area'
 
 export default function LinoChats() {
   const [conversations, setConversations] = useState<any[]>([])
