@@ -43,10 +43,10 @@ interface Props {
 }
 
 const formSchema = z.object({
-  subCategoryName: z.string().min(1, 'Name is required.'),
+  subCategoryName: z.string().trim().min(1, 'Name is required.'),
   imageUrl: z.string().optional(),
   subCategoryId: z.string().optional(),
-  priority: z.string().transform((val) => parseInt(val) || 0),
+  priority: z.coerce.number().default(0),
   categoryId: z.string().optional(),
 })
 type TasksForm = z.infer<typeof formSchema>
