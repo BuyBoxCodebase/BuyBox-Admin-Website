@@ -13,6 +13,7 @@ import {
   IconUserDollar,
   IconUsers,
   IconUserStar,
+  IconMessages,
 } from '@tabler/icons-react'
 import { Command } from 'lucide-react'
 import { type LinkProps } from '@tanstack/react-router'
@@ -64,6 +65,11 @@ export const sidebarData: SidebarData = {
           title: 'Orders',
           url: typeSafeUrl('/orders'),
           icon: IconMenuOrder,
+        },
+        {
+          title: 'AI Chats',
+          url: typeSafeUrl('/lino-chats'),
+          icon: IconMessages,
         },
         ...(userObj?.role === 'SUPER_ADMIN' ? [{
           title: 'Admins',

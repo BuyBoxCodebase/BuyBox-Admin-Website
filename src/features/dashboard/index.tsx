@@ -24,7 +24,6 @@ export default function Dashboard() {
     const isVerified = localStorage.getItem('isVerified')
     isVerified === 'false' ? navigate({ to: '/401' }) : null
     const token = localStorage.getItem('token')
-    console.log('Token:', token)
     token==null ? navigate({ to: '/sign-in' }) : navigate({ to: '/' })
   }, [navigate])
   return (
