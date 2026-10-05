@@ -33,7 +33,9 @@ export default function LinoChats() {
   useEffect(() => {
     const fetchConversations = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/lino/admin/conversations`)
+        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/lino/admin/conversations`, {
+          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+        })
         setConversations(response.data)
       } catch (error) {
         console.error('Failed to load lino conversations', error)
