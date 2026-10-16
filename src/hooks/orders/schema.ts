@@ -37,14 +37,11 @@ export const orderSchema = z.object({
     createdAt: z.string().nonempty(),
     products: z.array(z.object({
         product: z.object({
-            brand: z.object({
-                name: z.string().nonempty(),
-                user: z.object({
-                    name: z.string().nonempty(),
-                    phoneNumber: z.string().nullable(),
-                })
-            })
-        })
+            seller: z.object({
+                name: z.string(),
+                phoneNumber: z.string().nullish(),
+            }).nullish()
+        }).nullish()
     }))
 })
 

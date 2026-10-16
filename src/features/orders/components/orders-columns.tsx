@@ -58,7 +58,7 @@ export const columns: ColumnDef<Order>[] = [
       ),
     cell: ({ row }) => {
       const { products } = row.original
-      const seller = products[0]?.product?.brand?.user?.name
+      const seller = products[0]?.product?.seller?.name
       return <LongText className='max-w-42'>{seller}</LongText>
     },
     meta: { className: 'w-36' },
@@ -70,7 +70,7 @@ export const columns: ColumnDef<Order>[] = [
       ),
     cell: ({ row }) => {
       const { products } = row.original
-      const seller = products[0]?.product?.brand?.user?.phoneNumber
+      const seller = products[0]?.product?.seller?.phoneNumber
       return <LongText className='max-w-42'>{seller}</LongText>
     },
     meta: { className: 'w-36' },
