@@ -54,6 +54,9 @@ const AuthenticatedCustomersIndexLazyRouteImport = createFileRoute(
 const AuthenticatedDeliveryAgentsIndexLazyRouteImport = createFileRoute(
   '/_authenticated/delivery-agents/',
 )()
+const AuthenticatedDeliveryPricingIndexLazyRouteImport = createFileRoute(
+  '/_authenticated/delivery-pricing/',
+)()
 const AuthenticatedHelpCenterIndexLazyRouteImport = createFileRoute(
   '/_authenticated/help-center/',
 )()
@@ -243,6 +246,16 @@ const AuthenticatedDeliveryAgentsIndexLazyRoute =
       (d) => d.Route,
     ),
   )
+const AuthenticatedDeliveryPricingIndexLazyRoute =
+  AuthenticatedDeliveryPricingIndexLazyRouteImport.update({
+    id: '/delivery-pricing/',
+    path: '/delivery-pricing/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any).lazy(() =>
+    import('./routes/_authenticated/delivery-pricing/index.lazy').then(
+      (d) => d.Route,
+    ),
+  )
 const AuthenticatedHelpCenterIndexLazyRoute =
   AuthenticatedHelpCenterIndexLazyRouteImport.update({
     id: '/help-center/',
@@ -364,6 +377,7 @@ export interface FileRoutesByFullPath {
   '/chats/': typeof AuthenticatedChatsIndexLazyRoute
   '/customers/': typeof AuthenticatedCustomersIndexLazyRoute
   '/delivery-agents/': typeof AuthenticatedDeliveryAgentsIndexLazyRoute
+  '/delivery-pricing/': typeof AuthenticatedDeliveryPricingIndexLazyRoute
   '/help-center/': typeof AuthenticatedHelpCenterIndexLazyRoute
   '/lino-chats/': typeof AuthenticatedLinoChatsIndexLazyRoute
   '/orders/': typeof AuthenticatedOrdersIndexLazyRoute
@@ -396,6 +410,7 @@ export interface FileRoutesByTo {
   '/chats': typeof AuthenticatedChatsIndexLazyRoute
   '/customers': typeof AuthenticatedCustomersIndexLazyRoute
   '/delivery-agents': typeof AuthenticatedDeliveryAgentsIndexLazyRoute
+  '/delivery-pricing': typeof AuthenticatedDeliveryPricingIndexLazyRoute
   '/help-center': typeof AuthenticatedHelpCenterIndexLazyRoute
   '/lino-chats': typeof AuthenticatedLinoChatsIndexLazyRoute
   '/orders': typeof AuthenticatedOrdersIndexLazyRoute
@@ -431,6 +446,7 @@ export interface FileRoutesById {
   '/_authenticated/chats/': typeof AuthenticatedChatsIndexLazyRoute
   '/_authenticated/customers/': typeof AuthenticatedCustomersIndexLazyRoute
   '/_authenticated/delivery-agents/': typeof AuthenticatedDeliveryAgentsIndexLazyRoute
+  '/_authenticated/delivery-pricing/': typeof AuthenticatedDeliveryPricingIndexLazyRoute
   '/_authenticated/help-center/': typeof AuthenticatedHelpCenterIndexLazyRoute
   '/_authenticated/lino-chats/': typeof AuthenticatedLinoChatsIndexLazyRoute
   '/_authenticated/orders/': typeof AuthenticatedOrdersIndexLazyRoute
@@ -466,6 +482,7 @@ export interface FileRouteTypes {
     | '/chats/'
     | '/customers/'
     | '/delivery-agents/'
+    | '/delivery-pricing/'
     | '/help-center/'
     | '/lino-chats/'
     | '/orders/'
@@ -498,6 +515,7 @@ export interface FileRouteTypes {
     | '/chats'
     | '/customers'
     | '/delivery-agents'
+    | '/delivery-pricing'
     | '/help-center'
     | '/lino-chats'
     | '/orders'
@@ -532,6 +550,7 @@ export interface FileRouteTypes {
     | '/_authenticated/chats/'
     | '/_authenticated/customers/'
     | '/_authenticated/delivery-agents/'
+    | '/_authenticated/delivery-pricing/'
     | '/_authenticated/help-center/'
     | '/_authenticated/lino-chats/'
     | '/_authenticated/orders/'
@@ -711,6 +730,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDeliveryAgentsIndexLazyRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/delivery-pricing/': {
+      id: '/_authenticated/delivery-pricing/'
+      path: '/delivery-pricing'
+      fullPath: '/delivery-pricing/'
+      preLoaderRoute: typeof AuthenticatedDeliveryPricingIndexLazyRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/help-center/': {
       id: '/_authenticated/help-center/'
       path: '/help-center'
@@ -821,6 +847,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedChatsIndexLazyRoute: typeof AuthenticatedChatsIndexLazyRoute
   AuthenticatedCustomersIndexLazyRoute: typeof AuthenticatedCustomersIndexLazyRoute
   AuthenticatedDeliveryAgentsIndexLazyRoute: typeof AuthenticatedDeliveryAgentsIndexLazyRoute
+  AuthenticatedDeliveryPricingIndexLazyRoute: typeof AuthenticatedDeliveryPricingIndexLazyRoute
   AuthenticatedHelpCenterIndexLazyRoute: typeof AuthenticatedHelpCenterIndexLazyRoute
   AuthenticatedLinoChatsIndexLazyRoute: typeof AuthenticatedLinoChatsIndexLazyRoute
   AuthenticatedOrdersIndexLazyRoute: typeof AuthenticatedOrdersIndexLazyRoute
@@ -841,6 +868,8 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedCustomersIndexLazyRoute: AuthenticatedCustomersIndexLazyRoute,
   AuthenticatedDeliveryAgentsIndexLazyRoute:
     AuthenticatedDeliveryAgentsIndexLazyRoute,
+  AuthenticatedDeliveryPricingIndexLazyRoute:
+    AuthenticatedDeliveryPricingIndexLazyRoute,
   AuthenticatedHelpCenterIndexLazyRoute: AuthenticatedHelpCenterIndexLazyRoute,
   AuthenticatedLinoChatsIndexLazyRoute: AuthenticatedLinoChatsIndexLazyRoute,
   AuthenticatedOrdersIndexLazyRoute: AuthenticatedOrdersIndexLazyRoute,

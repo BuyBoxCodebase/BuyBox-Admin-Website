@@ -14,6 +14,7 @@ import {
   IconUsers,
   IconUserStar,
   IconMessages,
+  IconTruckDelivery,
 } from '@tabler/icons-react'
 import { Command } from 'lucide-react'
 import { type LinkProps } from '@tanstack/react-router'
@@ -65,6 +66,11 @@ export const sidebarData: SidebarData = {
           title: 'Orders',
           url: typeSafeUrl('/orders'),
           icon: IconMenuOrder,
+        },
+        {
+          title: 'Delivery Pricing',
+          url: typeSafeUrl('/delivery-pricing'),
+          icon: IconTruckDelivery,
         },
         {
           title: 'AI Chats',
