@@ -16,7 +16,7 @@ export const sellerSchema = z.object({
             brandPic: z.string().nullable(),
             createdAt: z.string().nonempty(),
         }
-    ).nullable()
+    ).nullish()
 
 })
 

@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import { useRef, useState, useEffect } from "react";
 import { IconUpload } from "@tabler/icons-react";
 import { useDropzone } from "react-dropzone";
+import { handleUnauthorized } from "@/utils/handle-unauthorized";
 
 export const FileUpload = ({
     onChange,
@@ -50,12 +51,7 @@ export const FileUpload = ({
             });
             
             if (!response.ok) {
-                if (response.status === 401) {
-                    localStorage.removeItem("token");
-                    localStorage.removeItem("user");
-                    localStorage.setItem("isLoggedIn", "false");
-                    window.location.href = "/sign-in";
-                }
+                handleUnauthorized(response);
                 throw new Error(`Upload failed with status: ${response.status}`);
             }
             

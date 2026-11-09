@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from 'react'
 import { Ad } from './schema'
+import { handleUnauthorized } from '@/utils/handle-unauthorized'
 
 export default function useGetAllAds() {
   const [ads, setAds] = useState<Ad[]>([])
@@ -20,9 +21,12 @@ export default function useGetAllAds() {
             },
           }
         )
+        if (!response.ok) {
+          handleUnauthorized(response)
+          throw new Error(`Failed to fetch ads: ${response.status}`)
+        }
         const data = await response.json()
-       // console.log(data)
-        setAds(data)
+        setAds(Array.isArray(data) ? data : [])
       } catch (err) {
         console.error('Error fetching products:', err)
         setAds([])
