@@ -127,11 +127,16 @@ export default function Dashboard() {
                 }
               />
               <StatCard
-                title='Pending Orders'
+                title='Total Customers'
                 loading={!ready}
-                value={data ? data.pendingOrders.inRange.toLocaleString() : ''}
-                note={data ? `${data.pendingOrders.total.toLocaleString()} pending in total right now` : ''}
-                icon={<path d='M22 12h-4l-3 9L9 3l-3 9H2' />}
+                value={data ? data.customers.total.toLocaleString() : ''}
+                note={data ? `+${data.customers.new.toLocaleString()} joined in this period` : ''}
+                icon={
+                  <>
+                    <path d='M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2' />
+                    <circle cx='12' cy='7' r='4' />
+                  </>
+                }
               />
             </div>
             <div className='grid grid-cols-1 gap-4 lg:grid-cols-7'>

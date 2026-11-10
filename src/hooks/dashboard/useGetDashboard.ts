@@ -28,7 +28,7 @@ export interface DashboardData {
   gmv: { value: number; previous: number; completedOrders: number }
   orders: { value: number; previous: number }
   sellers: { total: number; new: number; previousNew: number }
-  pendingOrders: { inRange: number; total: number }
+  customers: { total: number; new: number; previousNew: number }
   chart: { bucket: 'day' | 'month'; points: DashboardChartPoint[] }
   recentSales: DashboardRecentSale[]
 }
