@@ -87,6 +87,9 @@ const AuthenticatedSettingsNotificationsLazyRouteImport = createFileRoute(
 const AuthenticatedSubcategoriesIndexLazyRouteImport = createFileRoute(
   '/_authenticated/subcategories/',
 )()
+const AuthenticatedVariantsIndexLazyRouteImport = createFileRoute(
+  '/_authenticated/variants/',
+)()
 
 const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
   id: '/_authenticated',
@@ -350,6 +353,14 @@ const AuthenticatedSubcategoriesIndexLazyRoute =
       (d) => d.Route,
     ),
   )
+const AuthenticatedVariantsIndexLazyRoute =
+  AuthenticatedVariantsIndexLazyRouteImport.update({
+    id: '/variants/',
+    path: '/variants/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any).lazy(() =>
+    import('./routes/_authenticated/variants/index.lazy').then((d) => d.Route),
+  )
 
 export interface FileRoutesByFullPath {
   '/': typeof AuthenticatedIndexRoute
@@ -384,6 +395,7 @@ export interface FileRoutesByFullPath {
   '/sellers/': typeof AuthenticatedSellersIndexLazyRoute
   '/settings/': typeof AuthenticatedSettingsIndexLazyRoute
   '/subcategories/': typeof AuthenticatedSubcategoriesIndexLazyRoute
+  '/variants/': typeof AuthenticatedVariantsIndexLazyRoute
 }
 export interface FileRoutesByTo {
   '/admin': typeof authAdminRoute
@@ -417,6 +429,7 @@ export interface FileRoutesByTo {
   '/sellers': typeof AuthenticatedSellersIndexLazyRoute
   '/settings': typeof AuthenticatedSettingsIndexLazyRoute
   '/subcategories': typeof AuthenticatedSubcategoriesIndexLazyRoute
+  '/variants': typeof AuthenticatedVariantsIndexLazyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -453,6 +466,7 @@ export interface FileRoutesById {
   '/_authenticated/sellers/': typeof AuthenticatedSellersIndexLazyRoute
   '/_authenticated/settings/': typeof AuthenticatedSettingsIndexLazyRoute
   '/_authenticated/subcategories/': typeof AuthenticatedSubcategoriesIndexLazyRoute
+  '/_authenticated/variants/': typeof AuthenticatedVariantsIndexLazyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -489,6 +503,7 @@ export interface FileRouteTypes {
     | '/sellers/'
     | '/settings/'
     | '/subcategories/'
+    | '/variants/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/admin'
@@ -522,6 +537,7 @@ export interface FileRouteTypes {
     | '/sellers'
     | '/settings'
     | '/subcategories'
+    | '/variants'
   id:
     | '__root__'
     | '/_authenticated'
@@ -557,6 +573,7 @@ export interface FileRouteTypes {
     | '/_authenticated/sellers/'
     | '/_authenticated/settings/'
     | '/_authenticated/subcategories/'
+    | '/_authenticated/variants/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -807,6 +824,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedSubcategoriesIndexLazyRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/variants/': {
+      id: '/_authenticated/variants/'
+      path: '/variants'
+      fullPath: '/variants/'
+      preLoaderRoute: typeof AuthenticatedVariantsIndexLazyRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
@@ -853,6 +877,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedOrdersIndexLazyRoute: typeof AuthenticatedOrdersIndexLazyRoute
   AuthenticatedSellersIndexLazyRoute: typeof AuthenticatedSellersIndexLazyRoute
   AuthenticatedSubcategoriesIndexLazyRoute: typeof AuthenticatedSubcategoriesIndexLazyRoute
+  AuthenticatedVariantsIndexLazyRoute: typeof AuthenticatedVariantsIndexLazyRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
@@ -876,6 +901,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedSellersIndexLazyRoute: AuthenticatedSellersIndexLazyRoute,
   AuthenticatedSubcategoriesIndexLazyRoute:
     AuthenticatedSubcategoriesIndexLazyRoute,
+  AuthenticatedVariantsIndexLazyRoute: AuthenticatedVariantsIndexLazyRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =

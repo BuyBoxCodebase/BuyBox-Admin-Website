@@ -68,6 +68,11 @@ export const sidebarData: SidebarData = {
           icon: IconMenuOrder,
         },
         {
+          title: 'Product Approvals',
+          url: typeSafeUrl('/variants'),
+          icon: IconPackageExport,
+        },
+        {
           title: 'Delivery Pricing',
           url: typeSafeUrl('/delivery-pricing'),
           icon: IconTruckDelivery,
